@@ -1,0 +1,250 @@
+<!--rootviews/pages/scanCodeResulte/scanCodeResulte.wxml-->
+<import src="../../template/scratch/scratch.wxml" />
+<header  title="中国追溯.com"></header>
+<!-- <navigator  style="margin-top:30px;text-align:center;" wx:key="{{index}}" wx:for="{{appids}}"  target="miniProgram" app-id="{{item.aid}}" >{{index+1}}-{{item.name}}</navigator> -->
+<view>
+  <C_xfd_introduce></C_xfd_introduce>
+</view>
+<!-- 加载 -->
+<view wx:if="{{!scaninfo && !iserror}}" class='loadding_wapper'>
+  <view class='loadimgwapper'>
+    <image src="../../src/images/loading.gif"></image>
+  </view>
+  <view class='txt'>追溯码正在查询中...</view>
+</view>
+<!-- 无记录 -->
+<view wx:if="{{iserror}}" class="nulldatawrap">
+  <view>
+    <image src="../../src/images/nulldatawrap.png"></image>
+  </view>
+  <view class='txt'>此商品未录入哦~</view>
+</view>
+
+<!-- 验证码内容 -->
+<view class='scanCodeResulte_wapper {{ismorevleft?"moveleft":""}}' wx:if="{{scaninfo  && !iserror}}">
+  <view class='colorbg'></view>
+  <view class='inner_wapper' >
+    <!--本小程序的商品详情-->
+    <view catchtap='_gotoDetail' class='commodity'
+      wx:if="{{userinfo.appid == scaninfo.Data.Company.company_desc.appid}}">
+      <view class='commodityphoto'>
+        <image src='{{scaninfo.Data.Product.product_desc.productImage}}' ></image>
+      </view>
+      
+      <view class='commodityname'>
+        <text>{{scaninfo.Data.Product.product_desc.productName}}</text>
+      </view>
+      <view class="iconarrow" >
+        <image src='/src/images/iconArrow.png'></image>
+      </view>
+    </view>
+    <!--/本小程序的商品详情-->
+    <!--非本,需要跳转小程序的商品详情-->
+    <!-- <navigator open-type="navigate" 
+        bindcomplete="gotocomplete"
+        target="miniProgram" 
+        data-d='{{scaninfo.Data}}'
+        hover-class='none'
+        app-id="{{ scaninfo.Data.Company.company_desc.appid }}" 
+        path="{{gotoproductpath}}" 
+        wx:if="{{userinfo.appid != scaninfo.Data.Company.company_desc.appid}}">
+        <view catchtap='_gotoDetail' class='commodity'>
+          <view class='commodityphoto'>
+            <image src='{{scaninfo.Data.Product.product_desc.productImage}}' ></image>
+          </view>
+          
+          <view class='commodityname'>
+            <text>{{scaninfo.Data.Product.product_desc.productName}}</text>
+          </view>
+          <view class="iconarrow" >
+            <image src='/src/images/iconArrow.png'></image>
+          </view>
+        </view>
+    </navigator> -->
+    <view catchtap='_showqrcode' class='commodity'
+       wx:if="{{userinfo.appid != scaninfo.Data.Company.company_desc.appid}}">
+      <view class='commodityphoto'>
+        <image src='{{scaninfo.Data.Product.product_desc.productImage}}' ></image>
+      </view>
+      
+      <view class='commodityname'>
+        <text>{{scaninfo.Data.Product.product_desc.productName}}</text>
+      </view>
+      <view class="iconarrow" >
+        <image src='/src/images/iconArrow.png'></image>
+      </view>
+      <view class='line'></view>
+    </view>
+    <!--/非本,需要跳转小程序的商品详情-->
+    <view class="resultcode">
+      <view class="rescodename"><text class='ring'></text>追溯码</view>
+      <view class="rescode">{{codestring}}</view>
+       <!-- 刮开验证码 -->
+       <view wx:if="{{scaninfo.Data.Info.cons_count==0 }}" class="inputcode">
+          <template is = "scratch" data = "{{scratch, isScroll}}"></template> 
+       </view>
+
+      <!-- 已验证 -->
+       <view wx:elif="{{scaninfo.Data.Info.cons_count>0}}" 
+        class="inputcode inputbg fon">
+        <!-- <image src="../../../src/images/iconewm.png"></image> -->
+        {{scaninfo.Data.Info.cons_code}}
+      </view>
+      <view wx:if="{{scaninfo.Data.Info.cons_count>0}}" class="productSearch">
+       <view class='line2'></view>
+
+        <view wx:if="{{scaninfo.Data.Info.cons_count==1}}" class="firstSearch">
+          <text class='ring'></text>恭喜️️️️🎉此商品是正品</view>
+        <view wx:if="{{scaninfo.Data.Info.cons_count>1}}" class="firstSearch warning">
+          <text class='ring'></text>警告⚠️此商品已被消费</view>
+          <view class='cleardiv'></view>
+        <view class="searchPlace">查询时间: {{scaninfo.Data.Info.cons_time}}</view>
+        <view catchtap='_gotoMap' class="searchPlace">
+          查询地点: {{scaninfo.Data.Info.cons_addr}}
+          <view class='xxinfo'>️
+            <image src='/src/images/locationicon.jpg'></image>
+            详细地址
+          </view>
+        </view>
+        <image wx:if="{{scaninfo.Data.Info.cons_count>2}}" class="productyzcode" src='{{imgres.codeInvalid}}'></image>
+        <image wx:if="{{scaninfo.Data.Info.cons_count==1}}" class="productyzcode" src='{{imgres.codeEffective}}'></image>
+      </view>
+    </view>
+  </view>
+   <!-- 非本小程序 - 跳转小程序 -->
+  <view class='otherapp' 
+  catchtap='_showqrcode'
+  wx:if="{{scaninfo.Data.Company.company_desc.companyName &&  userinfo.appid != scaninfo.Data.Company.company_desc.appid}}">
+      <!-- <navigator open-type="navigate" 
+        bindcomplete="gotocomplete"
+        target="miniProgram" 
+        data-d='{{scaninfo.Data}}'
+        hover-class='none'
+        app-id="{{ scaninfo.Data.Company.company_desc.appid }}" 
+        path="{{otherappindex}}" >
+      <view class='l'>
+        <view class='logo'>
+          <image mode='widthFix' src='{{scaninfo.Data.Company.company_desc.companyLogo}}'></image>
+        </view>
+        <view class='info'>
+          <view class='title'>{{scaninfo.Data.Company.company_desc.companyName}}</view>
+          <view class='des'>打开"{{scaninfo.Data.Company.company_desc.companyName}}"小程序了解更多</view>
+        </view>
+      </view>
+      <view class='r iconarrow'>
+        <image src='/src/images/iconArrow.png'></image>
+      </view>
+    </navigator> -->
+    <view class='l'>
+      <view class='logo'>
+        <image mode='widthFix' wx:if="{{scaninfo.Data.Company.company_desc.companyLogo}}"
+        src='{{scaninfo.Data.Company.company_desc.companyLogo}}'></image>
+        <image wx:else src='/src/images/icon_zzlogo.png'></image>
+      </view>
+      <view class='info'>
+        <view class='title'>
+            <view class='name'>
+            {{scaninfo.Data.Company.company_desc.companyName}}</view>
+            <view class='r iconarrow'>
+              <image src='/src/images/iconArrow.png'></image>
+            </view>
+        </view>
+        <view class='des'>
+        了解更多"{{scaninfo.Data.Company.company_desc.companyName}}"产品</view>
+      </view>
+    </view>
+    
+  </view>
+  <!-- /非本小程序 - 跳转小程序 -->
+  <!-- 本小程序显示 -->
+ 
+  <view class='otherapp'  
+  catchtap='_gotoMain'
+  wx:if="{{scaninfo.Data.Company.company_desc.companyName && userinfo.appid == scaninfo.Data.Company.company_desc.appid}}">
+    <view class='l'>
+      <view class='logo'>
+        <image mode='widthFix' wx:if="{{scaninfo.Data.Company.company_desc.companyLogo}}" 
+        src='{{scaninfo.Data.Company.company_desc.companyLogo}}'></image>
+        <image wx:else src='/src/images/icon_zzlogo.png'></image>
+      </view>
+      <view class='info'>
+        <view class='title'>
+            <view class='name'>{{scaninfo.Data.Company.company_desc.companyName}}</view>
+            <view class='r iconarrow'>
+              <image src='/src/images/iconArrow.png'></image>
+            </view>
+        </view>
+        <view class='des'>了解更多"{{scaninfo.Data.Company.company_desc.companyName}}"产品</view>
+      </view>
+    </view>
+  </view>
+ <!-- /本小程序显示 -->
+  <view>
+    <C_xfd_info></C_xfd_info>
+  </view>
+</view>
+
+
+
+
+<view class='bottomnav {{isiphoneX?"iphonex":""}}' wx:if="{{userinfo.appid != scaninfo.Data.Company.company_desc.appid}}">
+  <view class='gotomain' catchtap='_gotoMain'>
+    <image src='../../src/images/icon6.png'></image>
+  </view>
+  <button open-type="share" class='sharebutton'>
+    <view class='sharebtn w'>
+      分享给好友
+    </view>
+  </button>
+  <view class='scanbtn' catchtap='_openScan'>继续扫码追溯</view>
+</view>
+<view class='bottomnav {{isiphoneX?"iphonex":""}} threebottomnav' wx:if="{{userinfo.appid == scaninfo.Data.Company.company_desc.appid}}">
+  <view class='gotomain' catchtap='_gotoMain'>
+    <image src='../../src/images/icon6.png'></image>
+  </view>
+  <view class='kfbtn' catchtap='_gotoshops'>
+    <image src='/src/images/shopicon.png'></image>
+    <view class='txt'>商城</view>
+  </view>
+  <button open-type="share" class='sharebutton'>
+    <view class='sharebtn w'>
+      分享给好友
+    </view>
+  </button>
+  <view class='scanbtn' catchtap='_openScan'>继续扫码</view>
+</view>
+<!-- 定位授权框 -->
+<view class='wxloginwapper' wx:if="{{isgolocal}}">
+  <view class='getuserlocal'>
+    <view class='p1'>为了更好体验</view>
+    <view class='p2'>需要获取您的地理位置,请打开授权</view>
+    <view class='p3'>(点击去授权,勾选"使用我的地理位置")</view>
+    <button class='btn' bindopensetting="openSettingeventLocal" open-type="openSetting">去授权</button>
+    <!-- <button class='btn' open-type="openSetting">去授权</button> -->
+  </view>
+</view>
+<!-- 定位授权框 -->
+<view class='qrcodewapper' wx:if="{{isshowqrcodewapper}}">
+  <view class='fenge'></view>
+  <view class='des s'>保存二维码,随时光顾"<text>{{scaninfo.Data.Company.company_desc.companyName}}</text>"店铺</view>
+  <view class='qrcodeimgview'>
+    <image src='{{scaninfo.Data.QrCode}}' catchtap='_openimg'></image>
+  </view>
+  <view class='des'>请在微信中识别二维码进入该店铺</view>
+  <view class='savebtn' catchtap='_saveqrcode'>保存到相册</view>
+  <view class='closebtn' catchtap='_closeqrcode'>关闭</view>
+</view>
+
+<view class='wxloginwapper' wx:if="{{isneedsaveimgshouquan}}">
+  <view class='getuserlocal'>
+    <!-- <view class='p1'>需要您保存图片权限</view> -->
+    <view class='p2'>需要您保存图片权限,请打开授权</view>
+    <view class='p3'>(点击去授权,勾选"保存到相册")</view>
+    <button class='btn' bindopensetting="openSettingevent" open-type="openSetting">去授权</button>
+    <view class='closebtn' catchtap='openSettingevent'>
+      <image src='/src/images/icon_close.png'></image>
+    </view>
+    <!-- <button class='btn' open-type="openSetting">去授权</button> -->
+  </view>
+  
+</view>

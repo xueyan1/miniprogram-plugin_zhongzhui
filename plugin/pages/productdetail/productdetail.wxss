@@ -1,0 +1,76 @@
+/* pages/productdetail/productdetail.wxss */
+page{
+  padding-bottom: 124rpx;
+}
+.logoview{
+  width: 100%;
+  height: 420rpx;
+  position: relative;
+}
+.detailphoto {
+  width: 750rpx;
+  height: 420rpx;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.comlogo{
+  position: absolute;
+  width: 89rpx;height: 89rpx;
+  left: 10rpx;top: 10rpx;
+}
+.comlogo image{
+  width: 89rpx;height: 89rpx;
+}
+.detailphoto {
+  width: 100%;
+  height: 420rpx;
+}
+
+.content {
+  width: 100%;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.content .desc {
+  width: 100%;
+  padding-top: 60rpx;
+}
+
+.content .desc .title {
+  width: 100%;
+  font-size: 36rpx;
+  font-family: "SFUIDisplay-Semibold";
+  color: rgba(76, 76, 76, 1);
+  line-height: 42rpx;
+}
+
+.content .desc .title .left {
+  width: 8rpx;
+  height: 28rpx;
+  background: rgba(5, 123, 250, 1);
+  margin-right: 20rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.content .desc .character {
+  padding-top: 20rpx;
+  width: 100%;
+  font-size: 30rpx;
+  font-family: SFUIDisplay-Regular;
+  color: rgba(76, 76, 76, 1);
+  line-height: 42rpx;
+  letter-spacing: 1rpx;
+}
+
+.imglist{
+  text-align: center;
+}
+.imglist image{
+  width: 700rpx;
+  display: block;
+}

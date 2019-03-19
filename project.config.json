@@ -1,0 +1,16 @@
+{
+	"miniprogramRoot": "miniprogram/",
+	"pluginRoot": "plugin/",
+	"compileType": "plugin",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"appid": "wx937a3ada5c7e0616",
+	"projectname": "%E4%B8%AD%E8%BF%BD",
+	"libVersion": "2.3.1",
+	"condition": {}
+}

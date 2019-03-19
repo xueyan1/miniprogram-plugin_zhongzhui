@@ -1,0 +1,108 @@
+/* pages/record/record.wxss */
+
+page {
+  padding-bottom: 200rpx;
+  background: #fff;
+}
+
+/* 推荐 */
+
+.recommend {
+  width: 100%;
+  position: relative;
+  background: #fff;
+  box-sizing: border-box;
+  padding-left: 32rpx;
+}
+
+.recommend .company {
+  width: 100%;
+  border-bottom: 1rpx solid #edeef0;
+  display: block;
+  overflow: hidden;
+  padding: 30rpx 0;
+  position: relative;
+}
+
+.recommend .company .companyphoto {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 12rpx;
+  float: left;
+}
+
+.recommend .company .left {
+  float: left;
+  width: 480rpx;
+  height: 160rpx;
+  margin-left: 20rpx;
+}
+
+.recommend .company .left .companyname {
+  width: 100%;
+  height: 44rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Semibold;
+  color: rgba(67, 67, 67, 1);
+  line-height: 40rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.recommend .company .left .code {
+  height: 41rpx;
+  font-size: 26rpx;
+  font-family: SFUIDisplay-Regular;
+  color: rgba(145, 149, 153, 1);
+  line-height: 41rpx;
+}
+
+.recommend .company .left .time {
+  height: 41rpx;
+  font-size: 26rpx;
+  font-family: SFUIDisplay-Regular;
+  color: rgba(145, 149, 153, 1);
+  line-height: 41rpx;
+}
+
+.recommend .company .left .address {
+  height: 41rpx;
+  font-size: 26rpx;
+  font-family: SFUIDisplay-Regular;
+  color: rgba(145, 149, 153, 1);
+  line-height: 41rpx;
+}
+.recommend .company .left .address  image {
+  width: 14rpx;
+  height: 18rpx;
+  display: inline-block;
+  /* vertical-align: middle; */
+  margin-right: 18rpx;
+}
+.recommend .company .iconarrow {
+  position: absolute;
+  width: 48rpx;
+  height: 48rpx;
+  float: right;
+  top: 86rpx;
+  right: 20rpx;
+}
+
+.recommend .company .iconarrow image {
+  width: 100%;
+  height: 100%;
+}
+
+.nohistory{
+  padding-top: 308rpx;
+  width: 750rpx;
+  text-align: center;
+  color: #999999;
+  font-size: 20px;
+}
+.nohistory image{
+  width: 376rpx;height: 376rpx;
+}

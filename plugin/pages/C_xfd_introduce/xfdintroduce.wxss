@@ -1,0 +1,24 @@
+/* plugin/pages/C_xfd_introduce/xfdintroduce.wxss */
+.xfdintroduce_wapper{
+  width: 750rpx;
+  height: 48rpx;
+  background: #fff;
+ 
+  position: relative;
+  color:rgba(65,88,135,1);
+}
+.xfdintroduce_wapper .inner{
+  width: 750rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding-left: 30rpx; */
+  font-size:26rpx;
+  position: absolute;
+  top: 0;left: 0;
+}
+.xfdintroduce_wapper image{
+  width: 32rpx;height: 32rpx;display: block;
+  margin-right: 10rpx;
+}

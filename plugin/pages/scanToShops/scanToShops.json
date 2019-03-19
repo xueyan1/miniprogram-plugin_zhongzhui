@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "C_xfd_introduce": "../../pages/C_xfd_introduce/xfdintroduce",
+    "C_xfd_info": "../../pages/C_xfd_info/xfdinfo",
+     "header":"../../pages/commpent/header/header"
+  },
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "中国追溯.com",
+    "navigationBarTextStyle": "black"
+}

@@ -1,0 +1,42 @@
+<!--pages/productdetail/productdetail.wxml-->
+<view class='logoview'>
+  <view class='detailphoto'  style="background-image:url({{scaninfo.Info.product_logo}})">
+    <!-- <image  mode='widthFix' src='{{scaninfo.Info.product_logo}}' class='detailphoto'></image> -->
+  </view>
+  <view class='comlogo'>
+    <image src='{{scaninfo.Info.company_logo}}'></image>
+  </view>
+</view>
+
+<view class='content'>
+  <view class='desc' wx:if="{{scaninfo.Product.product_desc.length>0}}">
+    <view class='title'>
+      <text class='left'></text>商品描述</view>
+    <text  class='character'>{{scaninfo.Product.product_desc}}</text>
+  </view>
+  <view class='desc' wx:if="{{scaninfo.Product.product_spec.length>0}}">
+    <view class='title'>
+      <text class='left'></text>商品规格</view>
+    <view class='character'>
+      <view wx:for="{{scaninfo.Product.product_spec}}" wx:key="{{this}}">
+        {{item}}
+      </view>
+    </view>
+  </view>
+  <view class='desc' wx:if="{{scaninfo.Product.product_img.length>0}}">
+    <view class='title' wx:if="{{isqiya}}">
+      <text class='left'></text>宣传图片
+    </view>
+    <view class='title' wx:else>
+      <text class='left'></text>商品图片
+    </view>
+    <view class='character'>
+      <view class='imglist'>
+        <image wx:for="{{scaninfo.Product.product_img}}" wx:key="{{this}}" 
+        src='{{item}}' mode='widthFix'></image>
+      </view>
+    </view>
+    
+    
+  </view>
+</view>

@@ -1,0 +1,19 @@
+<!--views/package/pages/map/map.wxml-->
+<map id="map" 
+  longitude="{{markers[0].longitude}}" 
+  latitude="{{markers[0].latitude}}" 
+  scale="18" 
+  
+  controls="{{controls}}" 
+  bindcontroltap="controltap" 
+  markers="{{markers}}" 
+  bindmarkertap="markertap" 
+  bindregionchange="regionchange" 
+  show-location style="width: {{screenWidth}}px; height: {{screenHeight}}px;">
+    <cover-view class='showinfo'>
+      <cover-view class='txt'>查询地点: {{showinfo.addr}}</cover-view>
+      <cover-view class='txt'>查询时间: {{showinfo.time}}</cover-view>
+    </cover-view>
+    
+</map>
+

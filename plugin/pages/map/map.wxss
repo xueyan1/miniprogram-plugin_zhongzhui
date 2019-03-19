@@ -1,0 +1,15 @@
+/* views/package/pages/map/map.wxss */
+
+.showinfo{
+  position: fixed;
+  left: 0;top: 0;
+  width: 710rpx;padding:5rpx 20rpx;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  font-size: 14px;
+}
+.showinfo .txt{
+  display:block;
+  white-space: pre-wrap;
+  padding-bottom: 10rpx;
+}

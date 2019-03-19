@@ -1,0 +1,13 @@
+<!-- <view>aaaa</view> -->
+
+<!-- <view bindtap='_gotoplugin'>点击跳转插件</view> -->
+
+
+<view bindtap='_gotoToShop'>跳转-商品码</view>
+<view style='height:30rpx;'></view>
+<view bindtap='_gotoToShops'>跳转-商铺码</view>
+<view style='height:30rpx;'></view>
+<view bindtap='_gotoToRecode'>跳转-扫码记录</view>
+<!-- <navigator url="plugin-private://wx937a3ada5c7e0616/pages/record/record">    
+  Go to pages/hello-page!
+</navigator> -->

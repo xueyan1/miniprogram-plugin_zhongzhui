@@ -1,0 +1,54 @@
+<!-- 需要使用cover的页面 如表单 视频等 -->
+<block wx:if="{{useCover}}">
+  <cover-view class="navigation">
+    <cover-view class="header" style="padding-top: {{statusBarHeight}}px; background-color: {{backgroundColor}}">
+      <cover-view class="left {{showUserAvatar && msgTip  ? 'red-tip':''}}" style="top: {{statusBarHeight}}px">
+
+        <cover-view wx:if="{{onlyBack}}" class="home" bindtap="handleGoHome">
+          <cover-image class="img" mode="aspectFill" src="{{userInfo.avatarUrl || 'https://resource.aijiatui.com/ai-img/img/defaultlogo.png'}}"></cover-image>
+        </cover-view>
+
+        <block wx:else>
+          <cover-view class="home" wx:if="{{showUserAvatar}}" bindtap="handleGoHome">
+            <cover-image class="img" mode="aspectFill" src="{{userInfo.avatarUrl || 'https://resource.aijiatui.com/ai-img/img/defaultlogo.png'}}"></cover-image>
+          </cover-view>
+          <cover-view class="back" wx:elif="{{showBackBtn}}" bindtap="handleGoBack">
+            <cover-image class="img iconfont" src="./image/back_icon.png"></cover-image>
+          </cover-view>
+        </block>
+
+      </cover-view>
+      <cover-view class="title" style="color:{{fontColor}}">{{title}}</cover-view>
+    </cover-view>
+  </cover-view>
+</block>
+
+<!-- 普通页面 -->
+<block wx:else>
+  <view class="navigation">
+    <view class="header" style="padding-top: {{statusBarHeight}}px; background-color: {{backgroundColor}}">
+      <view class="left {{showUserAvatar && msgTip  ? 'red-tip':''}}" style="top: {{statusBarHeight}}px">
+
+        <block wx:if="{{onlyBack}}">
+          <view class="home" bindtap="handleGoHome">
+            <open-data class="img" type="userAvatarUrl"></open-data>
+            <image class="img-bak" src="https://resource.aijiatui.com/ai-img/img/defaultlogo.png"></image>
+          </view>
+        </block>
+
+        <block wx:else>
+          <view class="home" wx:if="{{showUserAvatar}}" bindtap="handleGoHome">
+            <open-data class="img" type="userAvatarUrl"></open-data>
+            <image class="img-bak" src="https://resource.aijiatui.com/ai-img/img/defaultlogo.png"></image>
+          </view>
+          <view class="back" wx:elif="{{showBackBtn}}" bindtap="handleGoBack">
+            <image class="img iconfont" src="./image/back_icon.png"></image>
+          </view>
+        </block>
+
+      </view>
+      <view class="title" style="color:{{fontColor}}">{{title}}</view>
+    </view>
+  </view>
+</block>
+<view style="height: {{statusBarHeight + 44}}px"></view>

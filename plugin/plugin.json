@@ -1,0 +1,13 @@
+{
+  "pages": {
+    "scanCodeResulte": "pages/scanCodeResulte/scanCodeResulte",
+    "scanToShops": "pages/scanToShops/scanToShops",
+    "productdetail": "pages/productdetail/productdetail",
+    "map": "pages/map/map",
+    "record":"pages/record/record"
+  },
+  "main": "index.js",
+  "window":{
+    "navigationStyle": "custom"
+    }
+}

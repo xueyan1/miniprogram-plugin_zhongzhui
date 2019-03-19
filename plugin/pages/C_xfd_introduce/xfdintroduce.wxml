@@ -1,0 +1,8 @@
+<!--plugin/pages/C_xfd_introduce/xfdintroduce.wxml-->
+<view class='xfdintroduce_wapper'>
+  <view class='inner' style="{{orientation}}:{{marqueeDistance}}px;">
+     <image src='/src/images/xfdicon.png'></image>
+     <view>新发地携手中国追溯.com共建农产品质量安全诚信体系</view>
+  </view>
+ 
+</view>

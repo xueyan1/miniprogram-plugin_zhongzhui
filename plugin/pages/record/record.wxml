@@ -1,0 +1,28 @@
+<!--pages/record/record.wxml-->
+
+<!-- 推荐 -->
+<view class='recommend' wx:if="{{historydata.length>0}}">
+  <view class='company' 
+    data-d="{{item}}" catchtap='_gotomap'
+    wx:for="{{historydata}}" wx:key="this">
+    <image src='{{item.pro_desc.productImage}}' class='companyphoto'></image>
+    <view class='left'>
+      <view class='companyname'>{{item.pro_name}}</view>
+      <view class='code'>追溯码: {{item.pro_labelid}}</view>
+      <view class='time'>时间：{{item.pro_time}}</view>
+      <view class='address'><image src='/src/images/locationicon.jpg'></image>{{item.pro_addr}}</view>
+    </view>
+    <view class="iconarrow">
+      <image src='/src/images/iconArrow.png'></image>
+    </view>
+  </view>
+  
+ 
+</view>
+<view class='nohistory' wx:if="{{historydata.length==0}}">
+  <view class='img'>
+    <image src='../../src/images/nohistory.png'></image>
+  </view>
+  <view>你还没有记录哦~</view>
+</view>
+
